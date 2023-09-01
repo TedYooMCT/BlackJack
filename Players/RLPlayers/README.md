@@ -29,9 +29,24 @@ Also we can see that the Decay Step method has started low (almost like the rand
 ![Comparison graph](https://github.com/Bar-A-94/BlackJack/blob/master/compare/compare%201000%20games%20for%20each%20training%20session.png?raw=true)
 
 ## Compare between decision tables:
+### Important lesson:
+The Q-learning algorithm will teach the player to aviod risks, the reward for losing affects his decision majorly.  
 ### Hard tables:
-????
+Comparing the two tables we can see that 
+1. At the lower hand value - the q-learning has learned to wait till the dealer will burn-out, this is one down for q-learning.
+2. At the high value hand with low dealer's card - the q-learning might still hit some times, another one against q-learning.
+![OneStep](https://github.com/Bar-A-94/BlackJack/blob/master/Players/RLPlayers/Heat%20map%20tables/QLearning1Step%20Hard%20table.png)
+![Basic](https://github.com/Bar-A-94/BlackJack/blob/master/Players/TablesPlayers/Heat%20map%20tables/Basic%20player%20Hard%20table.png)   
+
 ### Soft tables:
-????
+Comparing the two tables we can see that 
+1. At the lower hand value - the q-learning has learned to wait till the dealer will burn-out, same as the hard table.
+2. At the high value hand with low dealer's card - the q-learning might still hit some times, it may actually be good some time.
+![OneStep](https://github.com/Bar-A-94/BlackJack/blob/master/Players/RLPlayers/Heat%20map%20tables/QLearning1Step%20Soft%20table.png)
+![Basic](https://github.com/Bar-A-94/BlackJack/blob/master/Players/TablesPlayers/Heat%20map%20tables/Basic%20player%20Soft%20table.png)   
+
 ### Split tables:
-????
+Comparing the two tables we can see that 
+1. Q-learning will avoid taking the risk of splitting and try and play the safe move.
+![OneStep](https://github.com/Bar-A-94/BlackJack/blob/master/Players/RLPlayers/Heat%20map%20tables/QLearning1Step%20Split%20table.png)
+![Basic](https://github.com/Bar-A-94/BlackJack/blob/master/Players/TablesPlayers/Heat%20map%20tables/Basic%20player%20Split%20table.png) 
