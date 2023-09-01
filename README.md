@@ -26,4 +26,4 @@ Contributions and feedback are welcome! Feel free to open issues, submit pull re
 
 ### About the Author:
 Bar alon   
-https://www.linkedin.com/in/bar-alon-037201228/
+[Linkedin](https://www.linkedin.com/in/bar-alon-037201228/)
