@@ -1,5 +1,4 @@
 # BlackJack
-## Description:
 Explore the world of probability theory and reinforcement learning while having fun with Blackjack!
 This Python project provides a comprehensive implementation of the classic card game and some probabilities with reinforcement learning ideas.
 
@@ -12,8 +11,8 @@ Interactive Interface: Enjoy a user-friendly interface to play Blackjack against
 
 ## Key Learning Opportunities:
 
-Gain insights into probability theory and its applications in card games.
-Develop and train a reinforcement learning agent from scratch.
+Gain insights into probability theory and its applications in card games - more information inside Players/TablePlayers folder - README.md
+Develop and train a reinforcement learning agent from scratch  - more information inside Players/RLPlayers folder - README.md
 Explore RL algorithms and strategies to optimize decision-making.
 
 ## Getting Started:
