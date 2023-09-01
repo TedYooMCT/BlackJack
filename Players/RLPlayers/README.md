@@ -29,3 +29,9 @@ Also we can see that the Decay Step method has started low (almost like the rand
 ![Comparison graph](https://github.com/Bar-A-94/BlackJack/blob/master/compare/compare%201000%20games%20for%20each%20training%20session.png?raw=true)
 
 ## Compare between decision tables:
+### Hard tables:
+????
+### Soft tables:
+????
+### Split tables:
+????
