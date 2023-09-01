@@ -136,24 +136,21 @@ def dye(hard, soft, split):
                    '9': [],
                    '10': [],
                    'A': []}
-    dye_colors = [1, -2, -1, 0]
-    final_actions = ['S', 'H', 'D', 'P']
+    dye_colors = [-2, 1, -1, 0]
+    #  final_actions = ['H', 'S', 'D', 'P']
 
     for dealer_card in hard.keys():
         # Hard dying
         for cell in hard[dealer_card]:
             DYE_HARD[dealer_card].append(dye_colors[np.argmax(cell)])
-            FINAL_HARD[dealer_card].append(final_actions[np.argmax(cell)])
         # Soft dying
         for cell in soft[dealer_card]:
             DYE_SOFT[dealer_card].append(dye_colors[np.argmax(cell)])
-            FINAL_SOFT[dealer_card].append(final_actions[np.argmax(cell)])
         # Split dying
         for cell in split[dealer_card]:
             DYE_SPLIT[dealer_card].append(dye_colors[np.argmax(cell)])
-            FINAL_SPLIT[dealer_card].append(final_actions[np.argmax(cell)])
 
-    return DYE_HARD, DYE_SOFT, DYE_SPLIT, FINAL_HARD, FINAL_SOFT, FINAL_SPLIT
+    return DYE_HARD, DYE_SOFT, DYE_SPLIT
 
 
 def plot_heatmap_based_on_values(player_name, hard_table, soft_table, split_table, rl=False):
@@ -174,9 +171,9 @@ def plot_heatmap_based_on_values(player_name, hard_table, soft_table, split_tabl
     else:
         HARD_INDEX = list(range(4, 22))
         SOFT_INDEX = list(range(12, 22))
-    DYE_HARD, DYE_SOFT, DYE_SPLIT, FINAL_HARD, FINAL_SOFT, FINAL_SPLIT = dye(hard_table,
-                                                                             soft_table,
-                                                                             split_table)
+    DYE_HARD, DYE_SOFT, DYE_SPLIT = dye(hard_table,
+                                        soft_table,
+                                        split_table)
     # change the values to a line separate string instead of a tuple
     for table in hard_table, soft_table:
         for key in table.keys():
