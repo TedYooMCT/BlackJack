@@ -1,29 +1,33 @@
-# BlackJack
-Explore the world of probability theory and reinforcement learning while having fun with Blackjack!    
-This Python project provides a comprehensive implementation of the classic card game and probabilities/reinforcement learning ideas.    
+## Rules of BlackJack
+Blackjack is a popular card game played in casinos around the world. The objective of the game is to beat the dealer's hand without going over a total of 21. Here are the rules of Blackjack with the restriction that you can only perform one split per hand:
 
-## Features:
+## Object of the Game
+The primary goal of Blackjack is to have a hand value closer to 21 than the dealer's hand without exceeding 21.
 
-Basic Blackjack Game: Play Blackjack with a fully functional card game engine.   
-Probability Calculations: Dive into the math behind the game, calculating probabilities of various outcomes.  
-Reinforcement Learning Agent: Train and challenge an RL agent to improve its Blackjack strategy.   
-Interactive Interface: Enjoy a user-friendly interface to play Blackjack against the RL agent or watch it learn.  
+## Card Values
+Number cards (2-10) are worth their face value.  
+Face cards (Jack, Queen, King) are each worth 10 points.  
+An Ace can be worth either 1 point or 11 points, depending on which value benefits the hand more.  
+## Game Setup
+Players are dealt two cards face-up, while the dealer receives one card face-up (upcard) and one card face-down (hole card).  
+## Player's Turn
+### Options
+Hit: Request an additional card to increase your hand total. You can continue hitting until you decide to stand or until your hand exceeds 21 (bust).   
+Stand: Keep your current hand and end your turn.   
+Double Down: Double your initial bet, receive one more card, and then stand.   
+Split: If you have two cards of the same rank (e.g., two 7s or two 10s), you can choose to split them into two separate hands, each with its own bet. After splitting, you'll receive one additional card for each hand, and you can then play each hand separately.    
+Players are allowed to perform only one split per hand.
+### Additional Rules
+If you split any other pair (e.g., 7-7) and then receive a 10-value card on one of the split hands, it's considered a regular 21, not a Blackjack.
+## Dealer's Turn
+Once all players have completed their turns, the dealer reveals their hole card.  
+The dealer must hit until their hand totals 17 or higher.   
+The dealer must stand on "soft 17" (a hand containing an Ace valued as 11), but must hit on "hard 17" (a hand without an Ace or with an Ace valued as 1).   
+## Winning and Payouts
+If the player's hand total is closer to 21 than the dealer's without exceeding 21, the player wins and is typically paid 1:1 on their bet.  
+If the player has a Blackjack (an Ace and a 10-value card) and the dealer does not, the player is usually paid 3:2 on their bet.   
+If the dealer busts (exceeds 21), all remaining players win.   
+## Ties
+If the player and dealer have the same hand total (a push), the player's bet is returned.   
 
-## Key Learning Opportunities:
-
-Gain insights into probability theory and its applications in card games - more information inside Players/TablePlayers folder - README.md    
-Develop and train a reinforcement learning agent from scratch  - more information inside Players/RLPlayers folder - README.md   
-Explore RL algorithms and strategies to optimize decision-making.   
-
-## Getting Started:
-
-Clone this repository to your local machine.  
-Install the required Python dependencies.  
-Start playing Blackjack by main.py, or set up RL training sessions by Train_and_compare.py!   
-
-### Contributions:
-Contributions and feedback are welcome! Feel free to open issues, submit pull requests, or share your insights.  
-
-### About the Author:
-Bar alon   
-[Linkedin](https://www.linkedin.com/in/bar-alon-037201228/)
+These are the fundamental rules of Blackjack with the condition that you can only split once per hand. It's important to note that specific casino rules and variations may apply, so it's recommended to check the house rules before playing in a casino or implementing the game in a project.
