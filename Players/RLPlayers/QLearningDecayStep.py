@@ -4,8 +4,8 @@ import random
 
 import numpy as np
 
-from Game import Game
-from Player import Player
+from Game.Game import Game
+from Game.Player import Player
 from Utility.Tables import plot_heatmap_based_on_values
 
 translate = 'HSDP'

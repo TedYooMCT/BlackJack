@@ -1,6 +1,6 @@
 import random
 
-from Player import Player
+from Game.Player import Player
 
 
 class RandomPlayer(Player):

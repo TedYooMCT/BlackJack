@@ -1,7 +1,7 @@
 from pandas import DataFrame
 
-from Game import card_of_each_value
-from Player import Player, value
+from Game.Game import card_of_each_value
+from Game.Player import Player, value
 from Players.TablesPlayers.TableOperations import choose_from_table
 from Utility.Tables import plot_heatmap_based_on_values
 

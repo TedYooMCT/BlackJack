@@ -1,4 +1,4 @@
-from Game import Game
+from Game.Game import Game
 from Players.HumanPlayer import HumanPlayer
 from Players.RLPlayers.QLearningDecayStep import QLearningDecayStepPlayer
 from Players.RLPlayers.QLearningOneStep import QLearningOneStepPlayer

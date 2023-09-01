@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pandas import DataFrame
 
-from Player import Player
+from Game.Player import Player
 from Players.TablesPlayers.TableOperations import choose_from_table
 
 BASE_HARD_TABLE = {'2': ['H', 'H', 'H', 'H', 'H', 'H', 'D', 'D', 'H', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'],
