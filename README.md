@@ -11,6 +11,7 @@ Interactive Interface: Enjoy a user-friendly interface to play Blackjack against
 
 ## Key Learning Opportunities:
 
+Learn the basic rules of the game - more information inside Game folder - README.md   
 Gain insights into probability theory and its applications in card games - more information inside Players/TablePlayers folder - README.md    
 Develop and train a reinforcement learning agent from scratch  - more information inside Players/RLPlayers folder - README.md   
 Explore RL algorithms and strategies to optimize decision-making.   
