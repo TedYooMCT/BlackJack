@@ -1,4 +1,12 @@
 def choose_from_table(self, dealer_card, split_table, hard_table, soft_table):
+    """
+    :param self: The player class
+    :param dealer_card:
+    :param split_table: The split table for choosing from
+    :param hard_table: The hard table for choosing from
+    :param soft_table: The soft table for choosing from
+    :return: the choice according to the tables provided
+    """
     if dealer_card in ['J', 'Q', 'K']:
         dealer_card = '10'
 

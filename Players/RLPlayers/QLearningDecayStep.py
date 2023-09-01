@@ -6,7 +6,7 @@ import numpy as np
 
 from Game import Game
 from Player import Player
-from utility.Tables import plot_heatmap_based_on_values
+from Utility.Tables import plot_heatmap_based_on_values
 
 translate = 'HSDP'
 

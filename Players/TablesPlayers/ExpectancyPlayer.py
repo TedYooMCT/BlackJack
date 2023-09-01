@@ -3,7 +3,7 @@ from pandas import DataFrame
 from Game import card_of_each_value
 from Player import Player, value
 from Players.TablesPlayers.TableOperations import choose_from_table
-from utility.Tables import plot_heatmap_based_on_values
+from Utility.Tables import plot_heatmap_based_on_values
 
 EXPECT_FINAL_HARD_TABLE = {
     '2': ['H', 'H', 'H', 'H', 'H', 'H', 'D', 'D', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'],

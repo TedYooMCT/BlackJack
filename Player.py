@@ -1,4 +1,7 @@
 class Player(object):
+    """
+    Basic player class that will expand for each player that will use this class
+    """
     def __init__(self, name, print_plays=False, save_plays=False):
         self.mode = "None player"
         self.prize = 0

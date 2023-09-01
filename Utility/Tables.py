@@ -32,6 +32,12 @@ def extract_type(name):
 
 
 def plot_three_lines_table(table, name):
+    """
+    Plot a table with more then one row
+    :param table:
+    :param name:
+    :return: None
+    """
     table_type = extract_type(name)
     table_dye = {key: [] for key in table}
     for key in table.keys():
@@ -68,6 +74,7 @@ def dye(hard, soft, split):
                   (stick, hit, double, split)
     :return: final tables - tables with index that fit with {'P', 'H', 'S', 'D'}
              dye tables - tables with index that fit with {'P': 0, 'H': -2, 'S': 1, 'D': -1}
+             The following values will dye: {'P': 0 : green, 'H': -2 : purple, 'S': 1 : yellow, 'D': -1 : blue}
     """
     DYE_HARD = {'2': [],
                 '3': [],
@@ -150,6 +157,17 @@ def dye(hard, soft, split):
 
 
 def plot_heatmap_based_on_values(player_name, hard_table, soft_table, split_table, rl=False):
+    """
+    Plot the 3 tables with dying the decision that the player will take
+    {'P' : green, 'H': purple, 'S' : yellow, 'D' : blue}
+    :param player_name: string
+    :param hard_table: table with 3 rows that represents the value for (stick, hit, double)
+    :param soft_table: table with 3 rows that represents the value for (stick, hit, double)
+    :param split_table: table with 4 rows that represents the value for (stick, hit, double, split)
+    :param rl: parameter to define the dimension of the tables to plot
+    :return: None
+    """
+    # We need to change the length of the index list because in the rl players we are ignoring the 21 row.
     if rl:
         HARD_INDEX = list(range(4, 21))
         SOFT_INDEX = list(range(12, 21))

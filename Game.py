@@ -42,6 +42,7 @@ class Game:
     def reset_prize(self):
         for player in self.players:
             player.prize = 0
+
     def play(self):
         rewarded = []
         for player in self.players:
@@ -52,8 +53,8 @@ class Game:
                 stay = False
                 while player.current_hand_value < 21 and not stay:
                     if self.print_plays:
-                        print(player.table_name + " turn, dealer first card: " + self.dealer_card)
-                        print(player.table_name + " - Current value: " + str(
+                        print(player.name + " turn, dealer first card: " + self.dealer_card)
+                        print(player.name + " - Current value: " + str(
                             player.current_hand_value) + " | Total cards: " + str(player.cards))
                     action = player.choose(self.dealer_card)
                     if action == 'S':
@@ -80,8 +81,8 @@ class Game:
                 while 0 < player.current_split < 21 and not stay:
                     player.play_split = True
                     if self.print_plays:
-                        print(player.table_name + " turn, dealer first card: " + self.dealer_card)
-                        print(player.table_name + " - Current value: " + str(
+                        print(player.name + " turn, dealer first card: " + self.dealer_card)
+                        print(player.name + " - Current value: " + str(
                             player.current_split) + " | Total cards: " + str(player.cards_split))
                     action = player.choose(self.dealer_card)
                     if action == 'S':
