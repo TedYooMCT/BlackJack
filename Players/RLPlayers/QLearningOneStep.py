@@ -12,11 +12,11 @@ translate = 'HSDP'
 
 
 class QLearningOneStepPlayer(Player):
-    def __init__(self, print_plays=False, save_plays=False, name="QLearning1Step", mode="QLearning1Step"):
+    def __init__(self, print_plays=False, save_plays=False, name="QLearning1Step", lr=0.1, mode="QLearning1Step"):
         super(QLearningOneStepPlayer, self).__init__(name, print_plays, save_plays)
         self.mode = mode
         self.memory = []
-        self.lr = 0.1
+        self.lr = lr
         self.exp_rate = 0.2
         self.update_rate = 1 / 10000
         self.train_mode = False

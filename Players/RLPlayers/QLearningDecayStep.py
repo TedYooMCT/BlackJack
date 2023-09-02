@@ -12,13 +12,14 @@ translate = 'HSDP'
 
 
 class QLearningDecayStepPlayer(Player):
-    def __init__(self, print_plays=False, save_plays=False, name="QLearningDecayStep", mode="QLearningDecayStep"):
+    def __init__(self, print_plays=False, save_plays=False, name="QLearningDecayStep", lr=0.1, gamma=0.9,
+                 mode="QLearningDecayStep"):
         super(QLearningDecayStepPlayer, self).__init__(name, print_plays, save_plays)
         self.mode = mode
         self.memory = []
-        self.lr = 0.1
+        self.lr = lr
         self.exp_rate = 0.2
-        self.gamma = 0.9
+        self.gamma = gamma
         self.train_mode = False
         self.update_rate = 1 / 10000
         # Try loading the player that already trained, if there is no trained player - create new one
