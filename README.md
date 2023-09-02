@@ -14,7 +14,7 @@ Interactive Interface: Enjoy a user-friendly interface to play Blackjack against
 Learn the basic rules of the game - more information inside Game folder - README.md   
 Gain insights into probability theory and its applications in card games - more information inside Players/TablePlayers folder - README.md    
 Gain insights into reinforcement learning agent and its applications in card games  - more information inside Players/RLPlayers folder - README.md   
-Explore RL algorithms and strategies to optimize decision-making.   
+Explore RL algorithms and strategies to optimize decision-making - Throughout the course of our experimentation, we conducted seven sets of games, each consisting of 1000 rounds, to assess the performance of our Blackjack players
 ![Comparison graph](https://github.com/Bar-A-94/BlackJack/blob/master/compare/compare%201000%20games%20for%20each%20training%20session.png?raw=true)
 ## Getting Started:
 
