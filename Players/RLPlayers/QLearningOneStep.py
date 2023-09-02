@@ -24,7 +24,7 @@ class QLearningOneStepPlayer(Player):
         try:
             fr = open(os.path.abspath(
                 "C:/Users/baral/PycharmProjects/ReinforcementLearning/BlackJack/" +
-                "Players/RLPlayers/QLearningOneStep_policy"),
+                "Players/RLPlayers/"+self.name+"_policy"),
                 'rb')
             self.Q_Values = pickle.load(fr)
             fr.close()
@@ -128,7 +128,7 @@ class QLearningOneStepPlayer(Player):
         :return:
         """
         fr = open(os.path.abspath(
-            "C:/Users/baral/PycharmProjects/ReinforcementLearning/BlackJack/Players/RLPlayers/QLearningOneStep_policy"),
+            "C:/Users/baral/PycharmProjects/ReinforcementLearning/BlackJack/Players/RLPlayers/"+self.name+"_policy"),
             'wb')
         pickle.dump(self.Q_Values, fr)
         fr.close()
