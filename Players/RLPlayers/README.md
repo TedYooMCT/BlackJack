@@ -24,8 +24,7 @@ Under the compare folder you can find my training process, as you can see I trie
 The most significant lesson learned from experimenting with these trained players is that, despite their efforts to learn and adapt, neither method comes close to the effectiveness of the basic strategy in Blackjack. The basic strategy, which is based on rigorous mathematical analysis, remains the most reliable and profitable approach for playing Blackjack. It serves as a reminder that while reinforcement learning methods can be powerful, they may not always outperform well-established strategies in certain domains.
 
 ## Learning curve:
-As showen in the following chart we can see that the One-Step Q-learning algorithem has learned his strategy from the very first 1000 rounds train.  
-Also we can see that the Decay Step method has started low (almost like the random strategy) and trained until the training wasn't effective anymore (around 1 million rounds).
+As showen in the following chart we can see that both Q-learning algorithem had learned their strategy from the very first 1000 rounds of train.  
 ![Comparison graph](https://github.com/Bar-A-94/BlackJack/blob/master/compare/compare%201000%20games%20for%20each%20training%20session.png?raw=true)
 
 ## Compare between decision tables:
