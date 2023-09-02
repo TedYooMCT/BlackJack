@@ -34,6 +34,7 @@ The Expectancy Player has a pre-calculated table that stores the expected values
 These calculations are the result of extensive probability analysis and strategy optimization.
 It's important to note that this player, its strategy, and the associated table were conceived and implemented as part of this project.
 The Expectancy Player's strategy table uses the same format as the Basic Strategy Player (hard, soft and split)
+Each table is organized in the order of (stick, hit, double, split) for each cell.
 
 ## Results and Table Differences
 ### Results Analysis
@@ -59,14 +60,23 @@ The choice between these players depends on the player's risk tolerance and stra
 underscoring the versatility of our Blackjack simulation environment.
 
 ### Table differences
+#### The basic strategy tends to take advantage of the probability more and split the risk much often.
 #### Hard table: 
+Main differences - The basic strategy uses the probability to get a 10 card to double the reward with hand of a 9 and 11.
+1. Hand of 9 with dealer 3/4: basic Double while expectancy Hit.
+2. Hand of 11 with dealer 8-10: basic Double while expectancy Hit.
+3. Hand of 16 with dealer 8-10: basic Hit while expectancy Stick.
 ![Expectancy](https://github.com/Bar-A-94/BlackJack/blob/master/Players/TablesPlayers/Heat%20map%20tables/Expectancy%20Hard%20table.png)
 ![Basic](https://github.com/Bar-A-94/BlackJack/blob/master/Players/TablesPlayers/Heat%20map%20tables/Basic%20player%20Hard%20table.png)   
-
 #### Soft table: 
+Main differences - The two tables are very similiar but the basic strategy uses the probability of the dealer to burn out on hand of 4/5/6 and double the reward.
 ![Expectancy](https://github.com/Bar-A-94/BlackJack/blob/master/Players/TablesPlayers/Heat%20map%20tables/Expectancy%20Soft%20table.png)
 ![Basic](https://github.com/Bar-A-94/BlackJack/blob/master/Players/TablesPlayers/Heat%20map%20tables/Basic%20player%20Soft%20table.png)   
 
 #### Split table: 
+Main differences - The basic split the risk more often.
+1. Dealer 9-A with hand 8s : basic Split while expectancy Stay.
+2. Dealer 2-7 with hand 2/3/4 pairs : basic Split while expectancy Hit.
+3. Hand of 16 with dealer 8-10: basic Hit while expectancy Stick.
 ![Expectancy](https://github.com/Bar-A-94/BlackJack/blob/master/Players/TablesPlayers/Heat%20map%20tables/Expectancy%20Split%20table.png)
 ![Basic](https://github.com/Bar-A-94/BlackJack/blob/master/Players/TablesPlayers/Heat%20map%20tables/Basic%20player%20Split%20table.png) 
