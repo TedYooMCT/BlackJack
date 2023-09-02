@@ -10,12 +10,12 @@ The Random Player is a simple player that makes decisions completely at random. 
 The Human Player allows you to control the game by entering your decisions through prompts. You play as the human participant, making choices based on your understanding of the game's rules.  
 
 ### 3. Basic Strategy Player
-The Basic Strategy Player follows the predefined basic strategy for Blackjack. This strategy is based on mathematical probabilities and provides recommendations for each possible player hand against the dealer's upcard. The Basic Strategy Player adheres strictly to this strategy when making decisions.   
+The Basic Strategy Player follows the predefined basic strategy for Blackjack. This strategy is based on mathematical probabilities and provides recommendations for each possible player hand against the dealer's card. The Basic Strategy Player adheres strictly to this strategy when making decisions.   
 [read more](https://wizardofodds.com/games/blackjack/strategy/4-decks/)   
 
 ### 4. Expectancy Player
 The Expectancy Player uses a table that calculates the expected value for each possible action based on the current state of the game. It chooses the action with the highest expected value. This player takes into account the probabilities of different outcomes and selects the action that maximizes expected gains.
-it's not known strategy - i made it myself.   
+it's not known strategy - I made it myself.   
 [read more](https://en.wikipedia.org/wiki/Expected_value) about expectancy   
 
 ### 5. Q-learning (One-Step) Player

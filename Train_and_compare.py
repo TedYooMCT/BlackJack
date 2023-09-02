@@ -9,15 +9,16 @@ from Players.TablesPlayers.ExpectancyPlayer import ExpectancyPlayer
 # rand = RandomPlayer(False, save_plays=True)
 base = BasicPlayer(print_plays=False, save_plays=True)
 ex = ExpectancyPlayer(False, save_plays=True)
-q_learn_one_step1 = QLearningOneStepPlayer(lr=0.1, name="OneStep0.1")
-q_learn_one_step01 = QLearningOneStepPlayer(lr=0.01, name="OneStep0.01")
-q_learn_one_step2 = QLearningOneStepPlayer(lr=0.2, name="OneStep0.2")
-q_learn_one_step05 = QLearningOneStepPlayer(lr=0.05, name="OneStep0.05")
-q_learn_decay = QLearningDecayStepPlayer(lr=0.01, gamma=0.95)
+q_learn_one = QLearningOneStepPlayer(lr=0.008)
+q_learn_decay90 = QLearningDecayStepPlayer(lr=0.01, gamma=0.9, name="90")
+q_learn_decay95 = QLearningDecayStepPlayer(lr=0.01, gamma=0.95, name="95")
+q_learn_decay99 = QLearningDecayStepPlayer(lr=0.01, gamma=0.99, name="99")
+q_learn_decay85 = QLearningDecayStepPlayer(lr=0.01, gamma=0.85, name="85")
+q_learn_decay80 = QLearningDecayStepPlayer(lr=0.01, gamma=0.80, name="80")
 # Define who joins the game
-players = [base, ex, q_learn_one_step1, q_learn_one_step01, q_learn_one_step2, q_learn_one_step05, q_learn_decay]
+players = [base, ex, q_learn_one, q_learn_decay90, q_learn_decay95, q_learn_decay99, q_learn_decay80, q_learn_decay85]
 
-# train X times and then compare the results for a 1000 games
+# train X times and then compare the results for 1000 games
 with open("compare/compare_before_training - learning rate.txt", 'w') as f:
     for i in range(10000):
         # Init a single game
@@ -27,12 +28,8 @@ with open("compare/compare_before_training - learning rate.txt", 'w') as f:
 
 train_amount = [pow(10, 3), pow(10, 4), pow(10, 5), pow(10, 6), pow(10, 7)]
 for amount in train_amount:
-    q_learn_decay.train(amount)
-    q_learn_one_step1.train(amount)
-    q_learn_one_step01.train(amount)
-    q_learn_one_step2.train(amount)
-    q_learn_one_step05.train(amount)
-
+    for player in players[2:]:
+        player.train(amount)
     game.reset_prize()
     with open("compare/compare_" + str(amount) + "_training - learning rate.txt", 'w') as f:
         for i in range(10000):
