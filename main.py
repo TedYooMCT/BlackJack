@@ -25,13 +25,6 @@ while user_input != "T":
 
 
 i = 0
-
-# players = [P.Human(False, save_plays=True)]
-# players = [P.Random(False, save_plays=True)]
-# players = [P.Expectancy(False, save_plays=True)]
-# players = [P.Basic(False, save_plays=True)]
-# players = [P.QLDecay(False, save_plays=True)]
-# players = [P.QLOneStep(False, save_plays=True)]
 while i < 5:
     # Init a single game
     game = Game.Game(players)
