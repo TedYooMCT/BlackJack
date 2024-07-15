@@ -1,9 +1,8 @@
 from pandas import DataFrame
 
-from Game.Game import card_of_each_value
-from Game.Player import Player, value
-from Players.TablesPlayers.TableOperations import choose_from_table
-from Utility.Tables import plot_heatmap_based_on_values
+import Game
+import Utility
+from .TableOperations import choose_from_table
 
 EXPECT_FINAL_HARD_TABLE = {
     '2': ['H', 'H', 'H', 'H', 'H', 'H', 'D', 'D', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'],
@@ -83,7 +82,7 @@ def cal_prob_stick(dealer_current, dealer_ace, player_ace, current):
     else:
         prob = 0
         # Calculate and add the probability for each drawing for the dealer
-        for card in card_of_each_value[1:]:
+        for card in Game.card_of_each_value[1:]:
             prob += cal_prob_stick(dealer_current + card, dealer_ace, player_ace, current) / 13
         # consider also soft/hard hand for ace drawing
         if dealer_ace == -1:
@@ -114,7 +113,7 @@ def cal_prob_hit(dealer_current, dealer_ace, player_ace, current):
         return cal_prob_hit_dict[dealer_current, dealer_ace == 1, player_ace == 1, current]
     prob = 0
     # Calculate and add the probability for each drawing for the player
-    for card in card_of_each_value[1:]:
+    for card in Game.card_of_each_value[1:]:
         prob += max(cal_prob_stick(dealer_current, dealer_ace, player_ace, current + card),
                     cal_prob_hit(dealer_current, dealer_ace, player_ace, current + card)) / 13
     # consider also soft/hard hand for ace drawing
@@ -145,7 +144,7 @@ def cal_prob_double(dealer_current, dealer_ace, player_ace, current):
         player_ace = 0
     prob = 0
     # Calculate and add the probability for each drawing for the player
-    for card in card_of_each_value[1:]:
+    for card in Game.card_of_each_value[1:]:
         prob += cal_prob_stick(dealer_current, dealer_ace, player_ace, current + card) / 13
     # consider also soft/hard hand for ace drawing
     if player_ace == -1:
@@ -198,10 +197,10 @@ def train_expectancyPlayer():
             dealer_ace = -1
         for current in HARD_INDEX:
             # Stick calculation
-            stick = cal_prob_stick(value(dealer_card), dealer_ace, 0, current)
+            stick = cal_prob_stick(Game.value(dealer_card), dealer_ace, 0, current)
             # Hard hand hit
-            hard = cal_prob_hit(value(dealer_card), dealer_ace, -1, current)
-            double_hard = cal_prob_double(value(dealer_card), dealer_ace, -1, current)
+            hard = cal_prob_hit(Game.value(dealer_card), dealer_ace, -1, current)
+            double_hard = cal_prob_double(Game.value(dealer_card), dealer_ace, -1, current)
             # Change probability to expectancy
             stick = round(2 * stick - 1, 2)
             hard = round(2 * hard - 1, 2)
@@ -209,20 +208,20 @@ def train_expectancyPlayer():
             EXPECTANCY_HARD_TABLE[dealer_card].append((stick, hard, double_hard))
             # Soft hand hit
             if current >= 12:
-                soft = cal_prob_hit(value(dealer_card), dealer_ace, 1, current)
-                double_soft = cal_prob_double(value(dealer_card), dealer_ace, 1, current)
+                soft = cal_prob_hit(Game.value(dealer_card), dealer_ace, 1, current)
+                double_soft = cal_prob_double(Game.value(dealer_card), dealer_ace, 1, current)
                 # Change probability to expectancy
                 soft = round(2 * soft - 1, 2)
                 double_soft = round(2 * double_soft - 2 * (1 - double_soft), 2)
                 EXPECTANCY_SOFT_TABLE[dealer_card].append((stick, soft, double_soft))
         # Split calculation for two till ten
         for pair in range(2, 11):
-            split_win = cal_prob_hit(value(dealer_card), dealer_ace, -1, pair)
+            split_win = cal_prob_hit(Game.value(dealer_card), dealer_ace, -1, pair)
             win = split_win ** 2
             tie = 2 * split_win * (1 - split_win)
-            hit = cal_prob_hit(value(dealer_card), dealer_ace, -1, pair * 2)
-            stick = cal_prob_stick(value(dealer_card), dealer_ace, -1, pair * 2)
-            double = cal_prob_double(value(dealer_card), dealer_ace, -1, pair * 2)
+            hit = cal_prob_hit(Game.value(dealer_card), dealer_ace, -1, pair * 2)
+            stick = cal_prob_stick(Game.value(dealer_card), dealer_ace, -1, pair * 2)
+            double = cal_prob_double(Game.value(dealer_card), dealer_ace, -1, pair * 2)
             # Change probability to expectancy
             hit = round(2 * hit - 1, 2)
             stick = round(2 * stick - 1, 2)
@@ -230,12 +229,12 @@ def train_expectancyPlayer():
             split = round(2 * win + 0 * tie - 2 * (1 - win - tie), 2)
             EXPECTANCY_SPLIT_TABLE[dealer_card].append((stick, hit, double, split))
         # Split calculation for two ACEs
-        split_win = cal_prob_hit(value(dealer_card), dealer_ace, 1, 11)
+        split_win = cal_prob_hit(Game.value(dealer_card), dealer_ace, 1, 11)
         win = split_win ** 2
         tie = 2 * split_win * (1 - split_win)
-        hit = cal_prob_hit(value(dealer_card), dealer_ace, 1, 12)
-        stick = cal_prob_stick(value(dealer_card), dealer_ace, 1, 12)
-        double = cal_prob_double(value(dealer_card), dealer_ace, 1, 12)
+        hit = cal_prob_hit(Game.value(dealer_card), dealer_ace, 1, 12)
+        stick = cal_prob_stick(Game.value(dealer_card), dealer_ace, 1, 12)
+        double = cal_prob_double(Game.value(dealer_card), dealer_ace, 1, 12)
         # Change probability to expectancy
         hit = round(2 * hit - 1, 2)
         stick = round(2 * stick - 1, 2)
@@ -248,10 +247,10 @@ def train_expectancyPlayer():
 
 if __name__ == '__main__':
     EXPECTANCY_HARD_TABLE, EXPECTANCY_SOFT_TABLE, EXPECTANCY_SPLIT_TABLE = train_expectancyPlayer()
-    plot_heatmap_based_on_values("Expectancy", EXPECTANCY_HARD_TABLE, EXPECTANCY_SOFT_TABLE, EXPECTANCY_SPLIT_TABLE)
+    Utility.plot_heatmap_based_on_values("Expectancy", EXPECTANCY_HARD_TABLE, EXPECTANCY_SOFT_TABLE, EXPECTANCY_SPLIT_TABLE)
 
 
-class ExpectancyPlayer(Player):
+class ExpectancyPlayer(Game.Player):
     def __init__(self, print_plays=False, save_plays=False, name="Expectancy", mode="Expectancy"):
         super(ExpectancyPlayer, self).__init__(name, print_plays, save_plays)
         self.mode = mode

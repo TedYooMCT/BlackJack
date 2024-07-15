@@ -2,8 +2,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pandas import DataFrame
 
-from Game.Player import Player
-from Players.TablesPlayers.TableOperations import choose_from_table
+import Game
+from .TableOperations import choose_from_table
+
 
 BASE_HARD_TABLE = {'2': ['H', 'H', 'H', 'H', 'H', 'H', 'D', 'D', 'H', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'],
                    '3': ['H', 'H', 'H', 'H', 'H', 'D', 'D', 'D', 'H', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'],
@@ -59,7 +60,7 @@ if __name__ == '__main__':
         plt.clf()
 
 
-class BasicPlayer(Player):
+class BasicPlayer(Game.Player):
     def __init__(self, print_plays=False, save_plays=False, name="Basic", mode="Basic"):
         super(BasicPlayer, self).__init__(name, print_plays, save_plays)
         self.mode = mode
