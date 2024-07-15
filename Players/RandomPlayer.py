@@ -1,9 +1,9 @@
 import random
 
-from Game.Player import Player
+import Game
 
 
-class RandomPlayer(Player):
+class RandomPlayer(Game.Player):
     def __init__(self, print_plays=False, save_plays=False, name="Rand", mode="Random"):
         super(RandomPlayer, self).__init__(name, print_plays, save_plays)
         self.mode = mode

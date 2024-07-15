@@ -4,15 +4,14 @@ import random
 
 import numpy as np
 
-from Game.Game import Game
-from Game.Player import Player
-from Utility.Tables import plot_heatmap_based_on_values
+import Game
+import Utility
 
 translate = 'HSDP'
 
 
-class QLearningOneStepPlayer(Player):
-    def __init__(self, print_plays=False, save_plays=False, name="QLearning1Step", lr=0.1, mode="QLearning1Step"):
+class QLearningOneStepPlayer(Game.Player):
+    def __init__(self, print_plays=False, save_plays=False, name="QLearningOneStep", lr=0.1, mode="QLearning1Step"):
         super(QLearningOneStepPlayer, self).__init__(name, print_plays, save_plays)
         self.mode = mode
         self.memory = []
@@ -22,12 +21,13 @@ class QLearningOneStepPlayer(Player):
         self.train_mode = False
         # Try loading the player that already trained, if there is no trained player - create new one
         try:
-            fr = open(os.path.abspath(
-                "C:/Users/baral/PycharmProjects/ReinforcementLearning/BlackJack/" +
-                "Players/RLPlayers/"+self.name+"_policy"),
-                'rb')
-            self.Q_Values = pickle.load(fr)
-            fr.close()
+            polPath = os.path.abspath(
+                f"Players/RLPlayers/{self.name}_policy"
+            )
+
+            with open(polPath, 'rb') as fr:
+                self.Q_Values = pickle.load(fr)
+
             print(name + " policy loaded")
 
         except FileNotFoundError:
@@ -140,7 +140,7 @@ class QLearningOneStepPlayer(Player):
         # Play n games
         for i in range(n):
             # Init a single game
-            Game(players)
+            Game.Game(players)
             print("played " + str(i) + " games so far")
         self.update_file()
 
@@ -197,7 +197,7 @@ class QLearningOneStepPlayer(Player):
                 SPLIT_TABLE[dealer_card].append(np.round(self.Q_Values[dealer_card, i, 0, True], 3))
             SPLIT_TABLE[dealer_card].append(np.round(self.Q_Values[dealer_card, 12, 1, True], 3))
         # Send it for the plotting
-        plot_heatmap_based_on_values(self.name, HARD_TABLE, SOFT_TABLE, SPLIT_TABLE, rl=True)
+        Utility.plot_heatmap_based_on_values(self.name, HARD_TABLE, SOFT_TABLE, SPLIT_TABLE, rl=True)
 
 
 if __name__ == '__main__':

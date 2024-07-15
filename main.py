@@ -1,34 +1,40 @@
-from Game import Game
-from Players.HumanPlayer import HumanPlayer
-from Players.RLPlayers.QLearningOneStep import QLearningOneStepPlayer
-from Players.RandomPlayer import RandomPlayer
-from Players.TablesPlayers.BasicPlayer import BasicPlayer
-from Players.TablesPlayers.ExpectancyPlayer import ExpectancyPlayer
+import Game
+import Players as P
+
 
 # Define the players (True or False for printing the computer moves)
 user_name = input("Enter your name: ")
 print("Hey " + user_name + "! welcome to Bar's Blackjack game")
 user_input = input("Choose your Rivals (enter the initial only/T for start playing) - Random | Basic | Expectancy | "
                    "Qlearning: ")
-players = [HumanPlayer(user_name)]
+players = [P.Human(user_name)]
 while user_input != "T":
     if user_input == "R":
-        players.append(RandomPlayer(False, save_plays=True))
+        players.append(P.Random(False, save_plays=True))
     elif user_input == "B":
-        players.append(BasicPlayer(print_plays=False, save_plays=True))
+        players.append(P.Basic(print_plays=False, save_plays=True))
     elif user_input == "E":
-        players.append(ExpectancyPlayer(False, save_plays=True))
+        players.append(P.Expectancy(False, save_plays=True))
     elif user_input == "Q":
-        players.append(QLearningOneStepPlayer())
+        players.append(P.QLOneStep())
     else:
         print("Invalid choice")
     user_input = input(
         "Choose your Rivals (enter the initial only/T for start playing) - Random | Basic | Expectancy | "
         "Qlearning: ")
+
+
 i = 0
-while True:
+
+# players = [P.Human(False, save_plays=True)]
+# players = [P.Random(False, save_plays=True)]
+# players = [P.Expectancy(False, save_plays=True)]
+# players = [P.Basic(False, save_plays=True)]
+# players = [P.QLDecay(False, save_plays=True)]
+# players = [P.QLOneStep(False, save_plays=True)]
+while i < 5:
     # Init a single game
-    game = Game(players)
+    game = Game.Game(players)
     i = i + 1
     print("Game n." + str(i) + " " + "".join(
         [player.name + " prize is : " + str(player.prize) + " , " for player in players]) + "\n")

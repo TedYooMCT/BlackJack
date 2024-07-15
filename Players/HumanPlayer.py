@@ -1,7 +1,7 @@
-from Game.Player import Player
+import Game
 
 
-class HumanPlayer(Player):
+class HumanPlayer(Game.Player):
     def __init__(self, name, print_plays=True, save_plays=False, mode="Human"):
         super(HumanPlayer, self).__init__(name, print_plays, save_plays)
         self.mode = mode

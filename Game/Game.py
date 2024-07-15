@@ -1,6 +1,6 @@
 import random
 
-from Game.Player import Player
+from .Player import Player
 
 num_of_deck = 6
 card_of_each = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
