@@ -33,7 +33,8 @@ def choose_from_table(self, dealer_card, split_table, hard_table, soft_table):
             action = hard_table[dealer_card][self.current_split]
             table_num = 3
     if self.print_plays:
-        print(self.table_name + " action is: " + action)
+        # print(self.table_name + " action is: " + action)
+        print("action is: " + action)
     if self.save_plays:
         self.memory.append([table_num, dealer_card, self.current_hand_value, self.current_split])
     return action
